@@ -1,0 +1,32 @@
+
+<div class="container">
+        <div class="row">
+          <div class="col-sm">
+          </div>
+          <div class="col-sm">
+              <div *ngIf = "showQuesList">
+                <ul class="queList">
+                        <li>
+                            {{ testData.questions[i].name }}
+                        </li>
+                    </ul>
+                    <ul class="ansList">
+                        <li *ngFor="let answ of testData.questions[i].answers"
+                        
+                        [class.selected]="answ === selectAns"
+                        (click)="isClicked(answ)"
+                        >
+                            {{ answ.name }}
+                        </li>
+                    </ul>
+                    <button class="btn-al btn btn-success" (click)="nextQue()">Next question</button>
+                </div>
+                <div *ngIf = "!showQuesList">
+                    Вы ответили на {{ rightAns }} из {{ testData.questions.length }}
+                </div>
+          </div>
+          <div class="col-sm">
+
+          </div>
+        </div>
+      </div>

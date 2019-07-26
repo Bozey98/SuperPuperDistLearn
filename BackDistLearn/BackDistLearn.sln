@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackDistLearn", "BackDistLearn.csproj", "{10564857-E049-498D-B3C8-F951C67092A8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{715F8451-73B9-451C-A051-FD6F3B62300E} = {715F8451-73B9-451C-A051-FD6F3B62300E}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "..\ClassLibrary\ClassLibrary.csproj", "{715F8451-73B9-451C-A051-FD6F3B62300E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{10564857-E049-498D-B3C8-F951C67092A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10564857-E049-498D-B3C8-F951C67092A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10564857-E049-498D-B3C8-F951C67092A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10564857-E049-498D-B3C8-F951C67092A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{715F8451-73B9-451C-A051-FD6F3B62300E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{715F8451-73B9-451C-A051-FD6F3B62300E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{715F8451-73B9-451C-A051-FD6F3B62300E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{715F8451-73B9-451C-A051-FD6F3B62300E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4CB846B6-29C4-4AB0-A9FF-F90931139390}
+	EndGlobalSection
+EndGlobal

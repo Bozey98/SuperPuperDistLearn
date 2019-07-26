@@ -1,0 +1,77 @@
+<div class="container">
+    <!-- Левое меню вопросов-->
+    <div class="row">
+      <div class="col-sm">
+        <input [(ngModel)] = "newName" type="text" class="form-control text-position" value="{{testData.name}}">
+        <br>
+        <ul class="list-group">
+                <li class="btn-al btn btn-outline-success inp-margin" *ngFor = "let que of testData.questions" (click)="showQueInfo(que.id)">
+                    {{  que.name }}
+                </li>
+            </ul>
+        <br>
+        <button class="btn-size btn-al btn btn-success" (click) = "openAddMenu()">Add Question</button>
+        <br>
+        <br>
+        <button class="btn-size btn-al btn btn-success" (click) = "changeName()">Save Changes</button>
+        <br>
+      </div>
+      <!-- Меню добавления вопроса-->
+      
+      <div class="col-sm">
+        
+        <div *ngIf="openMenu">
+            
+                
+                    <textarea type="text" name = "nameQue"  class="form-control inp-margin" placeholder="Question Text" [(ngModel)] = "testQues.name" #nameQue="ngModel" required></textarea>
+                    
+                    <ul class="ansList">
+                        <li *ngFor = "let que of testQues.answers">
+                            <input type="text" name = "ansName" class="form-control inp-margin" placeholder="Answer" [(ngModel)] = "que.name" #ansName="ngModel" (ngModelChange)="checkAns(testQues.answers)" required />
+                        </li>
+                    </ul>
+                    <label>Correct answer?</label>
+
+                    <select name = "corAns" [(ngModel)] = "correctAnswer" class="form-control" #corAns="ngModel" required>
+                            <option selected disabled>Choose...</option>
+                            <option value="1">Answer 1</option>
+                            <option value="2">Answer 2</option>
+                            <option value="3">Answer 3</option>
+                            <option value="4">Answer 4</option>
+                    </select>
+
+                    <br>
+                    
+                    <button [disabled] = "nameQue.invalid || corAns.invalid || !ansAccessBtn" class="btn-size btn-al btn btn-success" (click) = "addNewQuestion()">Save Question</button>
+           
+            
+        </div>
+         <!-- Меню редактирования вопроса--> 
+            <div *ngIf="showInfo">
+                <textarea  [(ngModel)] = "showQues.name" type="text" class="form-control inp-margin" value="{{showQues.name}}" name="nameQue1" #nameQue1="ngModel" required></textarea>
+                <ul class="ansList">
+                    <li *ngFor = "let que of showQues.answers">
+                        <input type="text" class="form-control inp-margin " value="{{que.name}}" name="ansName1" [(ngModel)] = "que.name" #ansName1="ngModel" (ngModelChange)="checkAns(showQues.answers)" required>
+                    </li>
+                </ul>
+                <label>Correct answer?</label>
+                <form>
+                    <select name="corAns1" [(ngModel)] = "correctAnswer" class="form-control" #corAns1="ngModel" required>
+                            <option selected disabled>Choose...</option>
+                            <option value="1">Answer 1</option>
+                            <option value="2">Answer 2</option>
+                            <option value="3">Answer 3</option>
+                            <option value="4">Answer 4</option>
+                    </select>
+                </form>
+    
+                <br>
+    
+                <button [disabled] = "(nameQue1.invalid || corAns1.invalid || !ansAccessBtn) || (nameQue1.pristine && corAns1.pristine && !oneClickToEnable)" class="btn-size btn-al btn btn-success" (click) = "editQuestion()">Edit Question</button>
+            </div>
+      </div>
+      <div class="col-sm">
+        
+      </div>
+    </div>
+  </div>

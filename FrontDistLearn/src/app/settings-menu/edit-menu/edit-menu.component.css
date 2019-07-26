@@ -1,0 +1,35 @@
+.btn-size {
+    width: 100%;
+}
+
+.inp-margin {
+    margin-bottom:10px;
+}
+
+.menu-style {
+    margin-bottom: 20px;
+}
+
+.text-position {
+    text-align: center;
+}
+
+.ansList {
+    list-style-type: none;
+}
+.ansList li {
+    width: 100%;
+}
+
+.queList {
+    list-style-type: none;
+}
+
+.queList li {
+    
+    background: green;
+}
+
+input.ng-touched.ng-invalid {border:solid red 2px;}
+
+

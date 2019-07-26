@@ -1,0 +1,12 @@
+.addTestClass {
+    background: rgb(37,154,53);
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.addTestClass:hover {
+    background: green;
+    
+}
