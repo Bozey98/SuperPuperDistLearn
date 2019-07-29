@@ -6,10 +6,14 @@ import { HeaderMenuComponent } from './header-menu/header-menu.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderMenuComponent,
+    HeaderMenuComponent
   ],
   imports: [
     BrowserModule,

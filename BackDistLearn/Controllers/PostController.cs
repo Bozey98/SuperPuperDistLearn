@@ -76,5 +76,12 @@ namespace BackDistLearn.Controllers
             return result;
         }
 
+        [HttpPost("HuiEgo")]
+        public List<Answer> CheckUser(CheckTest model)
+        {
+            var result = testService.CheckUserTest(model);
+            return result;
+        }
+
     } 
 }

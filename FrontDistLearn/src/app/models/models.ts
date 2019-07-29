@@ -20,3 +20,16 @@ export class Answer {
     isCorrect?:boolean;
 
 }
+
+export class CheckTest {
+    id:number;
+    selectAnswers: number[];
+    testId:number;
+}
+
+export class User {
+    id:number;
+    login:string;
+    password:string;
+    mail:string;
+}

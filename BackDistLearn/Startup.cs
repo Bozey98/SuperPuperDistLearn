@@ -24,6 +24,7 @@ namespace BackDistLearn
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<ITestService, TestService>();
+            services.AddScoped<IUserService, UserService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddCors();

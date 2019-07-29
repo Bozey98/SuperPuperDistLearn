@@ -18,3 +18,8 @@ C:/Users/admin.B1527-PC/Desktop/NewDistLearn/ClassLibrary/obj/Debug/netcoreapp2.
 /Users/denismusatov/Desktop/SuperDistLearn-master/ClassLibrary/obj/Debug/netcoreapp2.2/ClassLibrary.pdb
 /Users/denismusatov/Desktop/SuperDistLearn-master/ClassLibrary/bin/Debug/netcoreapp2.2/ClassLibrary.runtimeconfig.json
 /Users/denismusatov/Desktop/SuperDistLearn-master/ClassLibrary/bin/Debug/netcoreapp2.2/ClassLibrary.runtimeconfig.dev.json
+/Users/denismusatov/Desktop/SuperDistLearn-master/ClassLibrary/bin/Debug/netcoreapp2.2/Microsoft.Extensions.Identity.Stores.dll
+/Users/denismusatov/Desktop/SuperDistLearn-master/ClassLibrary/bin/Debug/netcoreapp2.2/Microsoft.Extensions.Identity.Stores.xml
+/Users/denismusatov/Desktop/SuperDistLearn-master/ClassLibrary/obj/Debug/netcoreapp2.2/ClassLibrary.csproj.CopyComplete
+/Users/denismusatov/Desktop/SuperDistLearn-master/ClassLibrary/bin/Debug/netcoreapp2.2/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+/Users/denismusatov/Desktop/SuperDistLearn-master/ClassLibrary/bin/Debug/netcoreapp2.2/Microsoft.AspNetCore.Identity.EntityFrameworkCore.xml

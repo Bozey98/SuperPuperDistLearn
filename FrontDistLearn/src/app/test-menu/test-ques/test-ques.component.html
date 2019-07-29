@@ -7,11 +7,11 @@
               <div *ngIf = "showQuesList">
                 <ul class="queList">
                         <li>
-                            {{ testData.questions[i].name }}
+                            {{ testData.questions[currentQue].name }}
                         </li>
                     </ul>
                     <ul class="ansList">
-                        <li *ngFor="let answ of testData.questions[i].answers"
+                        <li *ngFor="let answ of testData.questions[currentQue].answers"
                         
                         [class.selected]="answ === selectAns"
                         (click)="isClicked(answ)"
@@ -19,7 +19,12 @@
                             {{ answ.name }}
                         </li>
                     </ul>
-                    <button class="btn-al btn btn-success" (click)="nextQue()">Next question</button>
+                    <div *ngIf = "!showFinishBtn">
+                        <button [disabled] = "!nextBtnAccess" class="btn-al btn btn-success" (click)="nextQue()">Next question</button>
+                    </div>
+                    <div *ngIf = "showFinishBtn">
+                        <button [disabled] = "!nextBtnAccess" class="btn-al btn btn-success" (click) = "finishTest()">Finish test</button>
+                    </div>
                 </div>
                 <div *ngIf = "!showQuesList">
                     Вы ответили на {{ rightAns }} из {{ testData.questions.length }}

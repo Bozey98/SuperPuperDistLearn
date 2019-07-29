@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Test, Question, Answer } from '../../models/models'
+import { Test, Question, Answer, CheckTest} from '../../models/models'
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
@@ -10,8 +10,11 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./test-ques.component.css']
 })
 export class TestQuesComponent implements OnInit {
+  nextBtnAccess:boolean = false;
   showQuesList:boolean = true;
+  showFinishBtn:boolean = false;
   rightAns:number = 0;
+  currentQue:number = 0;
   selectAns:Answer;
   testQues: Question[]  = [{
     name: "",
@@ -23,24 +26,12 @@ export class TestQuesComponent implements OnInit {
     questions:this.testQues
   }
 
-  i = 0;
-
-  nextQue() {
-    this.i++;
-    if (this.i == this.testData.questions.length) {
-      alert("It is all");
-      this.showQuesList = false;
-      this.i = 0;
-    }
+  sendData:CheckTest = {
+    id: 0,
+    testId: 0,
+    selectAnswers: []
   }
 
-  isClicked(answ:Answer) {
-    this.selectAns = answ;
-    if (this.selectAns.isCorrect) {
-      this.rightAns++;
-    }
-    
-  }
   subs:Subscription;
   constructor(private activateRoute: ActivatedRoute, private http: HttpClient)
    { 
@@ -52,6 +43,38 @@ export class TestQuesComponent implements OnInit {
     this.http.post('http://localhost:5000/api/post/GetOne',this.testData).subscribe(
       (data:Test) => this.testData = data)
       this.rightAns = 0;
+      this.sendData.testId = this.testData.id;
+  }
+  
+
+  nextQue() {
+    this.nextBtnAccess = false;
+    this.currentQue++;
+    if (this.currentQue == this.testData.questions.length - 1) {
+      this.showFinishBtn = true;
+    }
+  }
+
+  isClicked(answ:Answer) {
+    this.nextBtnAccess = true
+    this.selectAns = answ;
+    if (this.selectAns.isCorrect) {
+      this.rightAns++;
+    }
+    this.sendData.selectAnswers.push(answ.id);
+    
+  }
+
+  finishTest() {
+    this.http.post('http://localhost:5000/api/post/HuiEgo',this.sendData).subscribe(
+      (data:[]) => {
+        console.log(data)
+        this.rightAns = data.length;
+      }
+    )
+      this.showFinishBtn = true;
+      this.showQuesList = false;
+      this.currentQue = 0;
   }
   
 }

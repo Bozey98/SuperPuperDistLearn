@@ -10,17 +10,23 @@
                 </li>
             </ul>
         <br>
+
         <button class="btn-size btn-al btn btn-success" (click) = "openAddMenu()">Add Question</button>
+
         <br>
         <br>
+
         <button class="btn-size btn-al btn btn-success" (click) = "changeName()">Save Changes</button>
+
         <br>
+        <br>
+
       </div>
       <!-- Меню добавления вопроса-->
       
       <div class="col-sm">
         
-        <div *ngIf="openMenu">
+            <div *ngIf="openMenu">
             
                 
                     <textarea type="text" name = "nameQue"  class="form-control inp-margin" placeholder="Question Text" [(ngModel)] = "testQues.name" #nameQue="ngModel" required></textarea>
@@ -45,7 +51,7 @@
                     <button [disabled] = "nameQue.invalid || corAns.invalid || !ansAccessBtn" class="btn-size btn-al btn btn-success" (click) = "addNewQuestion()">Save Question</button>
            
             
-        </div>
+            </div>
          <!-- Меню редактирования вопроса--> 
             <div *ngIf="showInfo">
                 <textarea  [(ngModel)] = "showQues.name" type="text" class="form-control inp-margin" value="{{showQues.name}}" name="nameQue1" #nameQue1="ngModel" required></textarea>
@@ -69,9 +75,9 @@
     
                 <button [disabled] = "(nameQue1.invalid || corAns1.invalid || !ansAccessBtn) || (nameQue1.pristine && corAns1.pristine && !oneClickToEnable)" class="btn-size btn-al btn btn-success" (click) = "editQuestion()">Edit Question</button>
             </div>
-      </div>
-      <div class="col-sm">
-        
-      </div>
+        </div>
+        <div class="col-sm">
+            
+        </div>
     </div>
-  </div>
+</div>

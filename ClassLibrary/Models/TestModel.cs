@@ -30,6 +30,13 @@ namespace ClassLibrary.Models
 
     }
 
+    public class CheckTest
+    {
+        public int Id { get; set; }
+        public int TestID { get; set; }
+        public List<int> SelectAnswers { get; set; }
+    }
+
     
 
 }

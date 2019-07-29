@@ -4,6 +4,7 @@ using System.Text;
 using ClassLibrary.Context;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 namespace ClassLibrary.Services
 {
@@ -27,6 +28,8 @@ namespace ClassLibrary.Services
         Question GetQuestion(Question model);
 
         Question EditQuestion(Question model);
+
+        List<Answer> CheckUserTest(CheckTest model);
     }
     public class TestService : ITestService
     {
@@ -108,6 +111,27 @@ namespace ClassLibrary.Services
             }
             db.SaveChanges();
             return editQues;
+        }
+
+        public List<Answer> CheckUserTest(CheckTest model)
+        {
+            List<Answer> corAns = new List<Answer>();
+            var checkedTest = db.Tests
+                .Where(s => s.Id == model.TestID)
+                .Include(s => s.Questions)
+                .ThenInclude(p => p.Answers)
+                .SelectMany(x => x.Questions.SelectMany(a => a.Answers))
+                .Where(s => s.IsCorrect == true)
+                .ToList();
+
+            foreach (var ans in model.SelectAnswers)
+            {
+                corAns.AddRange(checkedTest.Where(s => s.Id == ans));
+            }
+
+            
+            return corAns;
+
         }
     
 
