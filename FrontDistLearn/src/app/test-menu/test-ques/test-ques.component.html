@@ -3,7 +3,7 @@
         <div class="row">
           <div class="col-sm">
           </div>
-          <div class="col-sm">
+          <div class="col-sm" *ngIf="testData.questions[currentQue].answers">
               <div *ngIf = "showQuesList">
                 <ul class="queList">
                         <li>

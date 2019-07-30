@@ -12,9 +12,15 @@ namespace ClassLibrary.Context
         public DbSet<Answer> Answers { get; set; }
         public DbSet<User> Users { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer("Server=localhost,1433; Database=DistLearnDB;User=SA; Password=<Fuckoff123>");
+        //}
+
+        public AppContext(DbContextOptions<AppContext> options)
+            : base(options)
         {
-            optionsBuilder.UseSqlServer("Server=localhost,1433; Database=DistLearnDB;User=SA; Password=<Fuckoff123>");
+
         }
 
     }

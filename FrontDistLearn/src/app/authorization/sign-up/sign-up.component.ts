@@ -32,7 +32,6 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.regForms.value.inpLogin);
     this.newUser = {
       id:0,
       login:this.regForms.value.inpLogin,

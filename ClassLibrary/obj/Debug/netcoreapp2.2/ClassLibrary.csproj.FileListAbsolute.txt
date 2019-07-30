@@ -23,3 +23,9 @@ C:/Users/admin.B1527-PC/Desktop/NewDistLearn/ClassLibrary/obj/Debug/netcoreapp2.
 /Users/denismusatov/Desktop/SuperDistLearn-master/ClassLibrary/obj/Debug/netcoreapp2.2/ClassLibrary.csproj.CopyComplete
 /Users/denismusatov/Desktop/SuperDistLearn-master/ClassLibrary/bin/Debug/netcoreapp2.2/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 /Users/denismusatov/Desktop/SuperDistLearn-master/ClassLibrary/bin/Debug/netcoreapp2.2/Microsoft.AspNetCore.Identity.EntityFrameworkCore.xml
+/Users/denismusatov/Desktop/SuperDistLearn-master/ClassLibrary/bin/Debug/netcoreapp2.2/Microsoft.AspNetCore.Authentication.Abstractions.dll
+/Users/denismusatov/Desktop/SuperDistLearn-master/ClassLibrary/bin/Debug/netcoreapp2.2/Microsoft.AspNetCore.Authentication.Cookies.dll
+/Users/denismusatov/Desktop/SuperDistLearn-master/ClassLibrary/bin/Debug/netcoreapp2.2/Microsoft.AspNetCore.Http.Abstractions.dll
+/Users/denismusatov/Desktop/SuperDistLearn-master/ClassLibrary/bin/Debug/netcoreapp2.2/Microsoft.AspNetCore.Authentication.Cookies.xml
+/Users/denismusatov/Desktop/SuperDistLearn-master/ClassLibrary/bin/Debug/netcoreapp2.2/Microsoft.AspNetCore.Authentication.Abstractions.xml
+/Users/denismusatov/Desktop/SuperDistLearn-master/ClassLibrary/bin/Debug/netcoreapp2.2/Microsoft.AspNetCore.Http.Abstractions.xml

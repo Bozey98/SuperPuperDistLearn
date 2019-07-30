@@ -6,8 +6,12 @@ using ClassLibrary.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ClassLibrary.Context;
+using AppContext = ClassLibrary.Context.AppContext;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace BackDistLearn
 {
@@ -26,6 +30,15 @@ namespace BackDistLearn
             services.AddScoped<ITestService, TestService>();
             services.AddScoped<IUserService, UserService>();
 
+            string connection = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<AppContext>(options => options.UseSqlServer(connection));
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    
+                });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddCors();
         }
@@ -37,11 +50,27 @@ namespace BackDistLearn
             {
                 app.UseDeveloperExceptionPage();
             }
-             app.UseCors(options =>
-             options.WithOrigins("http://localhost:4200")
+           
+            app.UseHttpsRedirection(); 
+            app.UseAuthentication();
+
+            app.UseCors(options =>
+            options.WithOrigins("http://localhost:4200")
             .AllowAnyMethod()
             .AllowAnyHeader());
             app.UseMvc();
+
+            app.UseStaticFiles();
+            app.UseSpa(spa =>
+            {
+                if (env.IsDevelopment())
+                {
+                    spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
+                }
+            });
+
+
+
         }
     }
 }

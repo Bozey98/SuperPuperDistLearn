@@ -2,25 +2,27 @@
     <!-- Левое меню вопросов-->
     <div class="row">
       <div class="col-sm">
+        
         <input [(ngModel)] = "newName" type="text" class="form-control text-position" value="{{testData.name}}">
-        <br>
-        <ul class="list-group">
-                <li class="btn-al btn btn-outline-success inp-margin" *ngFor = "let que of testData.questions" (click)="showQueInfo(que.id)">
-                    {{  que.name }}
-                </li>
-            </ul>
-        <br>
+        <div *ngIf = "testData.questions">
+            <br>
+            <ul class="list-group">
+                    <li class="btn-al btn btn-outline-success inp-margin" *ngFor = "let que of testData.questions" (click)="showQueInfo(que.id)">
+                        {{  que.name }}
+                    </li>
+                </ul>
+            <br>
 
-        <button class="btn-size btn-al btn btn-success" (click) = "openAddMenu()">Add Question</button>
+            <button class="btn-size btn-al btn btn-success" (click) = "openAddMenu()">Add Question</button>
 
-        <br>
-        <br>
+            <br>
+            <br>
 
-        <button class="btn-size btn-al btn btn-success" (click) = "changeName()">Save Changes</button>
+            <button class="btn-size btn-al btn btn-success" (click) = "changeName()">Save Changes</button>
 
-        <br>
-        <br>
-
+            <br>
+            <br>
+        </div>
       </div>
       <!-- Меню добавления вопроса-->
       

@@ -17,8 +17,7 @@ export class TestQuesComponent implements OnInit {
   currentQue:number = 0;
   selectAns:Answer;
   testQues: Question[]  = [{
-    name: "",
-    answers: []
+    name: ""
   }]
   testData: Test = {
     name : "",

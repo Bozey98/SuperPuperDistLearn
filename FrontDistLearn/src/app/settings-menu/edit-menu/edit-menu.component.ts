@@ -40,8 +40,7 @@ export class EditMenuComponent implements OnInit {
   
   testData: Test = {
     id: 0,
-    name: "Test",
-    questions: []
+    name: "Test"
     
   }
 

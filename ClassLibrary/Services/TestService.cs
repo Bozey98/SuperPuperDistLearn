@@ -33,7 +33,12 @@ namespace ClassLibrary.Services
     }
     public class TestService : ITestService
     {
-        private AppContext db = new AppContext();
+        private AppContext db;
+
+        public TestService(AppContext context)
+        {
+            db = context;
+        }
 
         public List<Test> TestData = new List<Test>() {
             new Test() {Id = 1, Name = "English"},

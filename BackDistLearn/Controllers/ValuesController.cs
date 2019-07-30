@@ -6,6 +6,7 @@ using ClassLibrary.Services;
 using ClassLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BackDistLearn.Controllers
 {
@@ -21,6 +22,7 @@ namespace BackDistLearn.Controllers
         }
         // GET api/values
         [HttpGet]
+        [Authorize]
         public IEnumerable<Test> Get()
         {
             var result = testService.GetTests();

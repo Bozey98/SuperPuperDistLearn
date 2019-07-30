@@ -7,9 +7,9 @@
             <div class="card">
                 <article class="card-body">
                 <h4 class="card-title mb-4 mt-1">Log In</h4>
-                    <form>
+                    <form [formGroup] = "authForms" (ngSubmit)="onSubmit()">
                         <div class="form-group">
-                            <label>Your email</label>
+                            <label>Login</label>
                             <input name="" class="form-control" placeholder="Login" type="email" formControlName = "inpLogin">
                         </div> <!-- form-group// -->
                         <div class="form-group">
@@ -22,7 +22,7 @@
                         </div> <!-- checkbox .// -->
                         </div> <!-- form-group// -->  
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success btn-block"> Login  </button>
+                            <button type="submit" class="btn btn-success btn-block" > Login  </button>
                         </div> <!-- form-group// -->                                                           
                     </form>
                     {{ inpLogin }}
