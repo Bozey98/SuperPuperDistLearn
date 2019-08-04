@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../models/models';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-header-menu',
@@ -15,15 +16,22 @@ export class HeaderMenuComponent implements OnInit {
     password: "",
     mail:""
   }
-  constructor(private http:HttpClient, private router: Router) { }
+  constructor(private http:HttpClient, private router: Router, private Auth: AuthService) { }
 
   ngOnInit() {
     
   }
 
+  getInfo() {
+    this.kekUser = this.Auth.userInfo;
+  }
+
+  
+
   logout() {
     this.http.get("http://localhost:5000/api/auth/LogOut").subscribe(
       (data) => {
+        this.Auth.setLoggedIn(false);
         this.router.navigate(['login'])
       }
     )

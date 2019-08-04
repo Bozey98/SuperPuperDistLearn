@@ -49,7 +49,7 @@ namespace BackDistLearn.Controllers
             {
                 var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, curUser.Mail)
+                new Claim(ClaimTypes.Name, curUser.Login)
             };
                 // создаем объект ClaimsIdentity
                 ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
@@ -71,10 +71,13 @@ namespace BackDistLearn.Controllers
 
         [HttpGet("GetInfo")]
 
-        public ActionResult GetInfo()
+        public User GetInfo()
         {
-            var result = HttpContext.User.Identity.Name;
-            return Ok(result);
+
+            var model = HttpContext.User.Identity.Name;
+            var result = userService.GetUserByLogin(model);
+
+            return result;
         }
 
         

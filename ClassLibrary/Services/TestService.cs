@@ -33,12 +33,7 @@ namespace ClassLibrary.Services
     }
     public class TestService : ITestService
     {
-        private AppContext db;
-
-        public TestService(AppContext context)
-        {
-            db = context;
-        }
+        private DistLearnContext db = new DistLearnContext();
 
         public List<Test> TestData = new List<Test>() {
             new Test() {Id = 1, Name = "English"},
@@ -134,6 +129,9 @@ namespace ClassLibrary.Services
                 corAns.AddRange(checkedTest.Where(s => s.Id == ans));
             }
 
+            var user = db.Users.FirstOrDefault(s => s.Login == model.StudentLogin);
+            db.TestResults.Add(new TestResult() { CorrectAnswers = corAns.Count, TestID = model.TestID, UserID = user.Id });
+            db.SaveChanges();
             
             return corAns;
 

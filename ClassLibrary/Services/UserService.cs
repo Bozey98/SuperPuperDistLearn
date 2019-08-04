@@ -7,7 +7,7 @@ using ClassLibrary.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
-using AppContext = ClassLibrary.Context.AppContext;
+using DistLearnContext = ClassLibrary.Context.DistLearnContext;
 
 namespace ClassLibrary.Services
 {
@@ -16,22 +16,26 @@ namespace ClassLibrary.Services
         User AddNewUser(User model);
         User AuthUser(User model);
         User GetUser(User model);
+        User GetUserByLogin(string model);
     }
 
     public class UserService: IUserService
     {
-        private AppContext db;
+        private DistLearnContext db = new DistLearnContext();
 
-        public UserService(AppContext context)
-        {
-            db = context;
-        }
+        
 
         public User AddNewUser (User model)
         {
-            db.Users.Add(new User() { Login = model.Login, Password = model.Password, Mail = model.Mail });
-            db.SaveChanges();
-            return db.Users.Where(s => s.Login == model.Login).FirstOrDefault();
+            var checkRegUser = db.Users.FirstOrDefault(s => s.Login == model.Login);
+            if (checkRegUser == null)
+            {
+                db.Users.Add(new User() { Login = model.Login, Password = model.Password, Mail = model.Mail });
+                db.SaveChanges();
+                return db.Users.Where(s => s.Login == model.Login).FirstOrDefault();
+            }
+            else
+                return null;
         }
 
         public User AuthUser (User model)
@@ -44,11 +48,18 @@ namespace ClassLibrary.Services
         public User GetUser(User model)
         {
             return db.Users.Where(s => s.Login == model.Login && s.Password == model.Password).FirstOrDefault();
-
-    
-
-
             
+        }
+
+        public User GetUserByLogin(string model)
+        {
+            return db.Users.Where(s => s.Login == model).Select(p => new User
+            {
+                Login = p.Login,
+                Mail = p.Mail
+
+            }).FirstOrDefault();
+
         }
 
 

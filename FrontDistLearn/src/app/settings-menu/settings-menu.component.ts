@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-import { Test, Question, Answer} from '../models/models'
+import { Test, Question, Answer, User} from '../models/models'
 
 
 @Component({
@@ -10,6 +10,7 @@ import { Test, Question, Answer} from '../models/models'
   styleUrls: ['./settings-menu.component.css']
 })
 export class SettingsMenuComponent implements OnInit {
+  cookieInfo;
   id: number;
   i:number = 1;
   testData:Test[];

@@ -10,3 +10,13 @@
 .float-right {
     color: rgb(37,154,53);
 }
+
+.control-label.required:after { 
+    color: #d00;
+    content: "*";
+    position: absolute;
+    margin-left: 5px;
+    
+  }
+
+input.ng-touched.ng-invalid {border:solid red 2px;}

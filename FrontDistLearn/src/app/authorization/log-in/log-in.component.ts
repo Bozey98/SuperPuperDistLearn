@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { User } from 'src/app/models/models';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { catchError } from 'rxjs/operators';
+import { never } from 'rxjs';
 
 @Component({
   selector: 'login',
@@ -20,7 +24,7 @@ export class LogInComponent implements OnInit {
     password:"",
     mail:""
   }
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private router: Router, private Auth: AuthService) { }
 
   ngOnInit() {
   }
@@ -29,12 +33,28 @@ export class LogInComponent implements OnInit {
     this.User.login = this.authForms.value.inpLogin;
     this.User.password = this.authForms.value.inpPassword;
     this.http.post("http://localhost:5000/api/Auth/TestLogin", this.User).subscribe(
-      (data) => console.log(data)
-    )
-    this.http.get("http://localhost:5000/api/Auth/GetInfo").subscribe(
-      (data) => console.log(data)
-    )
-    
+      (data) => {
+        this.Auth.setUserInfo()
+      .pipe(
+        catchError(er => {
+          this.router.navigate(['login']);
+          return never();
+        })
+      )
+      .subscribe(data => {
+        if (data.login && data.mail) {
+          console.log(data);
+          this.Auth.setLoggedIn(true);
+          this.router.navigate(['app-settings-menu'])
+        }
+        else {
+          this.authForms.setValue({inpLogin: '', inpPassword: ''});
+          alert("Неверный логин или пароль")
+          this.router.navigate(['login']);
+        }
+      })
+      })
   }
+  
 
 }

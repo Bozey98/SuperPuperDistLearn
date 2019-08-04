@@ -9,28 +9,24 @@
             <h4 class="card-title mb-4 mt-1">Sign up</h4>
                 <form [formGroup]="regForms" (ngSubmit)="onSubmit()">
                     <div class="form-group">
-                        <label>Your email</label>
-                        <input name="" class="form-control" placeholder="Email" type="email" formControlName = "inpMail">
+                        <label class="control-label required">Your email</label>
+                        <input name="" class="form-control" placeholder="Email" type="email" formControlName = "inpMail" required>
                     </div> <!-- form-group// -->
                     <div class="form-group">
-                        <label>Your login</label>
-                        <input name="" class="form-control" placeholder="Login" type="login" formControlName = "inpLogin">
+                        <label class="control-label required">Your login</label>
+                        <input name="" class="form-control" placeholder="Login" type="login" formControlName = "inpLogin" (ngModelChange)="removeErrorExistLogin()"required>
                     </div> <!-- form-group// -->
                     <div class="form-group">
-                        <label>Your password</label>
-                        <input class="form-control" placeholder="Password" type="password" formControlName = "inpPassword">
+                        <label class="control-label required">Your password</label>
+                        <input class="form-control" placeholder="Password" type="password" formControlName = "inpPassword" (ngModelChange)="removeErrorPassEuq()" required>
                     </div> <!-- form-group// --> 
                     <div class="form-group">
-                        <label>Confirm password</label>
-                        <input class="form-control" placeholder="Confirm password" type="password">
+                        <label class="control-label required">Confirm password</label>
+                        <input class="form-control" placeholder="Confirm password" type="password" formControlName = "inpConfPassword" required>
                     </div> <!-- form-group// --> 
-                    <div class="form-group"> 
-                    <div class="checkbox">
-                    <label> <input type="checkbox"> Save password </label>
-                    </div> <!-- checkbox .// -->
-                    </div> <!-- form-group// -->  
+                    <br> 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success btn-block"> Login  </button>
+                        <button type="submit" class="btn btn-success btn-block"> Sign up  </button>
                     </div> <!-- form-group// -->                                                           
                 </form>
                 {{ inpLogin }}
@@ -38,7 +34,21 @@
         </div>
       </div>
       <div class="col-sm">
-        
+        <div *ngIf = "errorMessageEmpty">
+            <div class="alert alert-danger" role="alert">
+                Заполните необходиые поля!
+            </div>
+        </div>
+        <div *ngIf = "errorMessagePassConf">
+            <div class="alert alert-danger" role="alert">
+                Пароли не совпадают!
+            </div>
+        </div>
+        <div *ngIf = "errorMessageExistLogin">
+            <div class="alert alert-danger" role="alert">
+                Пользователь с таким логином уже зарегистрирован!
+            </div>
+        </div>
       </div>
     </div>
   </div>

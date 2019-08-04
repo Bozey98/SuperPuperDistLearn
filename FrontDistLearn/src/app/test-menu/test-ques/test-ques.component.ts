@@ -3,6 +3,7 @@ import { Test, Question, Answer, CheckTest} from '../../models/models'
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-test-ques',
@@ -26,13 +27,14 @@ export class TestQuesComponent implements OnInit {
   }
 
   sendData:CheckTest = {
+    studentLogin:"",
     id: 0,
     testId: 0,
     selectAnswers: []
   }
 
   subs:Subscription;
-  constructor(private activateRoute: ActivatedRoute, private http: HttpClient)
+  constructor(private activateRoute: ActivatedRoute, private http: HttpClient, private Auth: AuthService)
    { 
     this.subs = activateRoute.params.subscribe(params => this.testData.id = params['id']);
     console.log(this.testData.id)
@@ -43,6 +45,7 @@ export class TestQuesComponent implements OnInit {
       (data:Test) => this.testData = data)
       this.rightAns = 0;
       this.sendData.testId = this.testData.id;
+      this.sendData.studentLogin = this.Auth.userInfo.login
   }
   
 

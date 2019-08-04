@@ -2,3 +2,15 @@
     background-color: rgb(37,154,53);
     color: white;
 }
+
+.actions:hover {
+    color:red;
+}
+
+.fa-user-circle:hover {
+    opacity: 0.6;
+}
+
+.fa-bars:hover {
+    opacity: 0.6;
+}

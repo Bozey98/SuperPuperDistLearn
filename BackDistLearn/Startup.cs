@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ClassLibrary.Services;
@@ -10,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ClassLibrary.Context;
-using AppContext = ClassLibrary.Context.AppContext;
+
 using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace BackDistLearn
@@ -30,8 +29,8 @@ namespace BackDistLearn
             services.AddScoped<ITestService, TestService>();
             services.AddScoped<IUserService, UserService>();
 
-            string connection = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<AppContext>(options => options.UseSqlServer(connection));
+            //string connection = Configuration.GetConnectionString("DistLearnContext");
+            //services.AddDbContext<DistLearnContext>(options => options.UseSqlServer(connection));
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>

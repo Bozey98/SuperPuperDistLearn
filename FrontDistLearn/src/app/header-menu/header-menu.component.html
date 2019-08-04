@@ -1,11 +1,28 @@
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 newbg mb-3 border-bottom shadow-sm">
-    <a class="btn btn-outline-light" href="#">Menu </a>
-    <h5 class="p-2 my-0 mr-md-auto font-weight-normal">Distance Learning</h5>
+    <a class="fas fa-bars fa-lg"></a>
+    
+    <h5 class="p-2 my-0 mr-md-auto font-weight-normal"> Distance Learning</h5>
     <nav class="my-2 my-md-0 mr-md-3">
-      <a class="p-2 text-white" [routerLink] = '["app-test-menu"]'>Tests</a>
-      <a class="p-2 text-white" [routerLink] = '["app-settings-menu"]'>Settings</a>
+        <a *ngIf = "this.Auth.isLoggedIn" class="p-2 text-white" [routerLink] = '["results"]'>Results</a>
+        <a *ngIf = "this.Auth.isLoggedIn" class="p-2 text-white" [routerLink] = '["app-test-menu"]'>Tests</a>
+        <a *ngIf = "this.Auth.isLoggedIn" class="p-2 text-white" [routerLink] = '["app-settings-menu"]'>Settings</a>
+      
+      <div class="btn-group">
+          <a class = "fas fa-user-circle fa-2x" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" data-offset="41,18" (click)=getInfo()></a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item"  *ngIf = "this.Auth.isLoggedIn" >{{kekUser.login}}</a>
+            <a class="dropdown-item"  *ngIf = "!this.Auth.isLoggedIn" [routerLink] = '["sign-up"]'>Sign up</a>
+            <a class="dropdown-item"  *ngIf = "!this.Auth.isLoggedIn" [routerLink] = '["login"]'>Sign in</a>
+            
+            <a class="dropdown-item"  *ngIf = "this.Auth.isLoggedIn" [routerLink] = '["login"]'(click)="logout()">Log out</a>
+          </div>
+      </div>
       
     </nav>
-    <a class="btn btn-outline-light" [routerLink] = '["login"]'(click)="logout()">Log out</a>
-    <a class="btn btn-outline-light" [routerLink] = '["sign-up"]'>Sign up</a>
+    
+    <!-- Example single danger button -->
+
   </div>
+  
+
+  

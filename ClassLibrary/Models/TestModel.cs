@@ -33,10 +33,19 @@ namespace ClassLibrary.Models
     public class CheckTest
     {
         public int Id { get; set; }
+        public string StudentLogin { get; set; }
         public int TestID { get; set; }
         public List<int> SelectAnswers { get; set; }
     }
 
-    
+    public class TestResult
+    {
+        public int Id { get; set; }
+        public int UserID { get; set; }
+        public int TestID { get; set; }
+        public int CorrectAnswers { get; set; }
+    }
+
+
 
 }

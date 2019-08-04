@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ClassLibrary.Migrations
 {
-    [DbContext(typeof(AppContext))]
+    [DbContext(typeof(DistLearnContext))]
     [Migration("20190727144621_addUserInDB")]
     partial class addUserInDB
     {

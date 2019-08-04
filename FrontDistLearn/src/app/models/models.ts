@@ -22,6 +22,7 @@ export class Answer {
 }
 
 export class CheckTest {
+    studentLogin: string;
     id:number;
     selectAnswers: number[];
     testId:number;

@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ClassLibrary.Migrations
 {
     [DbContext(typeof(DistLearnContext))]
-    [Migration("20190728180425_addMail")]
-    partial class addMail
+    [Migration("20190803171024_AddTestResults")]
+    partial class AddTestResults
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -69,6 +69,25 @@ namespace ClassLibrary.Migrations
                     b.ToTable("Tests");
                 });
 
+            modelBuilder.Entity("ClassLibrary.Models.TestResult", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CorrectAnswers");
+
+                    b.Property<int>("TestID");
+
+                    b.Property<int>("UserID");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserID");
+
+                    b.ToTable("TestResults");
+                });
+
             modelBuilder.Entity("ClassLibrary.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -99,6 +118,14 @@ namespace ClassLibrary.Migrations
                     b.HasOne("ClassLibrary.Models.Test")
                         .WithMany("Questions")
                         .HasForeignKey("TestID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("ClassLibrary.Models.TestResult", b =>
+                {
+                    b.HasOne("ClassLibrary.Models.User")
+                        .WithMany("TestResults")
+                        .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
